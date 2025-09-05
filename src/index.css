@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Deal Spark Design System - Dark-first with Glassmorphism */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Deal Spark Dark Theme - Primary Colors */
+    --background: 237 24% 9%;  /* #1A1A2E */
+    --foreground: 0 0% 95%;
+    
+    /* Glass Cards */
+    --card: 237 24% 12%;  /* Slightly lighter than background for depth */
+    --card-foreground: 0 0% 95%;
+    --glass: 237 24% 15% / 0.7;  /* Glassmorphism effect */
+    --glass-border: 0 0% 100% / 0.1;
+    
+    /* Popover & Dialogs */
+    --popover: 237 24% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Primary - Luminous Blue */
+    --primary: 225 100% 70%;  /* #6A8CFF */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 225 100% 80%;
+    
+    /* Secondary - Subtle Violet */
+    --secondary: 237 30% 20%;  /* #424874 inspired */
+    --secondary-foreground: 0 0% 95%;
+    
+    /* Muted tones */
+    --muted: 237 24% 16%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Accent - Enhanced Blue */
+    --accent: 225 100% 70%;
+    --accent-foreground: 0 0% 98%;
+    
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Interactive Elements */
+    --border: 0 0% 100% / 0.1;
+    --input: 237 24% 16%;
+    --ring: 225 100% 70%;
+    
+    /* Design System Radius */
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(225 100% 70%), hsl(225 100% 80%));
+    --gradient-glass: linear-gradient(135deg, 
+      hsl(237 24% 15% / 0.7), 
+      hsl(237 24% 18% / 0.5));
+    --gradient-subtle: linear-gradient(180deg, 
+      hsl(237 24% 12%), 
+      hsl(237 24% 10%));
+      
+    /* Shadows */
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.37);
+    --shadow-glow: 0 0 30px hsl(225 100% 70% / 0.3);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.25);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Light mode fallback (keeping minimal as we're dark-first) */
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 237 24% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 237 24% 9%;
+    --primary: 225 100% 60%;
+    --primary-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Glassmorphism utility classes */
+  .glass-card {
+    @apply bg-gradient-glass backdrop-blur-glass border border-glass-border shadow-glass;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: linear-gradient(135deg, 
+      hsl(var(--glass)),
+      hsl(var(--glass) / 0.5)
+    );
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
